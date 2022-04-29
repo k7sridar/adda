@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleFn, closeFn, booking } from './operation';
+import { toggleFn, closeFn, booking } from '../operation';
 const HallSlot = ({ member, active, setActive, setAlert, price, setPrice }) => {
   const [select, setSelect] = useState([]);
   const dispatch = useDispatch();

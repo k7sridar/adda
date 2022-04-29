@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Tennis from './tennis';
-import ClubHouse from './clubhouse';
-import Hall from './hall';
-import TennisSLot from './tennisSlot';
-import HallSlot from './hallSlot';
-import ClubSlot from './clubSlot';
+import Tennis from './tennis/tennis';
+import ClubHouse from './clubhouse/clubhouse';
+import Hall from './hall/hall';
+import TennisSLot from './tennis/tennisSlot';
+import HallSlot from './hall/hallSlot';
+import ClubSlot from './clubhouse/clubSlot';
 import Alert from './alert';
 import image from '../img/men.jpeg';
 

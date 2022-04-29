@@ -1,5 +1,5 @@
 import React from 'react';
-import image from '../img/clubhouse.jpeg';
+import image from '../../img/clubhouse.jpeg';
 const ClubHouse = ({ setActive, setAlert }) => {
   return (
     <div

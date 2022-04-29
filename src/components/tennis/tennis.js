@@ -1,7 +1,7 @@
 import React from 'react';
-import image from '../img/hall.jpeg';
+import image from '../../img/tennis.jpeg';
 
-const Hall = ({ setActive, setAlert }) => {
+const Tennis = ({ setActive, setAlert }) => {
   return (
     <div
       className="column"
@@ -15,11 +15,11 @@ const Hall = ({ setActive, setAlert }) => {
           <img src={image} alt="no img" />
         </div>
         <div className="content">
-          <a className="header">Hall</a>
+          <a className="header">Tennis court</a>
         </div>
       </div>
     </div>
   );
 };
 
-export default Hall;
+export default Tennis;

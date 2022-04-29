@@ -1,22 +1,17 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { toggleFn, closeFn, booking } from './operation';
+import { toggleFn, closeFn, booking } from '../operation';
 
-const TennisSLot = ({
-  member,
-  active,
-  setActive,
-  setAlert,
-  price,
-  setPrice,
-}) => {
+const ClubSlot = ({ member, active, setActive, setAlert, price, setPrice }) => {
   const [select, setSelect] = useState([]);
+
   const dispatch = useDispatch();
-  const tennisSlots = useSelector((state) => state.tennisStore);
+  const clubSlots = useSelector((state) => state.clubStore);
+
   const bookingFn = () => {
     booking(setSelect, setActive, setAlert);
-    if (select.length === 0) return;
-    dispatch({ type: 'book-ts-slot', payload: { select, member } });
+    if (!select.length === 0) return;
+    dispatch({ type: 'book-CH-slot', payload: { select, member } });
   };
 
   return (
@@ -24,34 +19,36 @@ const TennisSLot = ({
       <i
         className="close icon"
         onClick={() => {
-          closeFn(setActive, tennisSlots, setSelect, 'tennis', setPrice);
+          closeFn(setActive, clubSlots, setSelect, 'club', setPrice);
         }}
       ></i>
 
       <div className="header">2012-10-26</div>
       <div className="image content">
         <div className="description">
-          <div className="ui header">Tennis Slots </div>
+          <div className="ui header">Club House Slots</div>
         </div>
       </div>
       <div>
         <div className="ui three column grid">
-          {tennisSlots.map((v, i) => {
+          {clubSlots.map((v, i) => {
             return (
               <div className="ui column grid" key={i}>
                 <button
                   className={`ui inactive primary  ${
                     v.booked ? 'disabled' : ''
                   } button`}
-                  id={i + `tennis`}
+                  id={i + 'club'}
                   onClick={() => {
                     if (select.includes(i)) return;
                     setSelect([...select, i]);
                     setPrice(v.price + price);
-                    toggleFn(i, 'tennis');
+                    toggleFn(i, 'club');
                   }}
                 >
-                  {v.member ? v.member + ' has booked the slot' : v.time}
+                  {v.member
+                    ? v.member + ' has booked the slot'
+                    : v.time + ` ₹ ${v.price}`}
                 </button>
                 <br />
                 <br />
@@ -67,8 +64,8 @@ const TennisSLot = ({
         <div
           className="ui black deny button"
           onClick={() => {
-            tennisSlots.forEach((v, i) => {
-              closeFn(setActive, tennisSlots, setSelect, 'tennis', setPrice);
+            clubSlots.forEach((v, i) => {
+              closeFn(setActive, clubSlots, setSelect, 'club', setPrice);
             });
           }}
         >
@@ -86,4 +83,4 @@ const TennisSLot = ({
   );
 };
 
-export default TennisSLot;
+export default ClubSlot;
